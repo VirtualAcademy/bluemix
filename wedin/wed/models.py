@@ -24,7 +24,7 @@ class Event(models.Model):
 	startime=models.DateTimeField()
 	endtime=models.DateTimeField()
 	venue=models.CharField(max_length=200,blank=False)	
-	pix=models.ImageField(upload_to='/media/',null=True,blank=True)
+	pix=models.ImageField(upload_to='/pix',null=True,blank=True)
 	
 	def __unicode__(self):
 		return smart_unicode(u'%s' % (self.subtitle))
