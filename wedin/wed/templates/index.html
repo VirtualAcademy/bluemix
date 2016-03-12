@@ -10,13 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">       
-    <link rel="shortcut icon" href=" ">  
-    <link href=' ' rel='stylesheet' type='text/css'>
-    <link href=' ' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="../static/favicon-aqua.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
     <!-- Global CSS -->
-    <link rel="stylesheet" href=" ">   
+    <link rel="stylesheet" href="../static/plugins/font-awesome/css/font-awesome.min.css">   
     <!-- Plugins CSS -->   
-    <link rel="stylesheet" href=" ">
+    <link rel="stylesheet" href="../static/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href=" ">
     <link rel="stylesheet" href=" ">
     <link rel="stylesheet" href=" ">
@@ -205,12 +205,12 @@
             <h3 class="title script"><span class="title-deco-left"></span><span class="title-text"><span class="hidden-xs">Gift</span> Registries</span><span class="title-deco-right"></span></h3>
             <div class="message-container">
                 <div class="message-inner center-block">
-				 for reg in registry 
+				{% for reg in registry %}
                     <div class="intro">{{reg.note}}</div>
-                    <div class="thank-you script">reg.{{signature}} <i class='fa fa-smile-o'></i></div>
+                    <div class="thank-you script">{{reg.signature}} <i class='fa fa-smile-o'></i></div>
                     <div class="signature script">{{bride}} & {{groom}}</div>
                     <div class="couple-profile"></div>
-				 endfor 
+				{% endfor %}
                 </div><!--//message-inner-->
             </div><!--//message-container-->
             {% comment %}
