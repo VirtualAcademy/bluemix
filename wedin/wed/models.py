@@ -8,8 +8,8 @@ class Hero(models.Model):
 	bride_nick=models.CharField(max_length=10,blank=False)
 	slogan=models.CharField(max_length=100,blank=False)
 	wedin_date=models.DateField()
-	email=models.EmailField()
-	phone=models.CharField(max_length=15)
+	email=models.EmailField(default='odieleowedding@gmail.com')
+	phone=models.CharField(max_length=15,default='00237677757776')
 	
 	class Meta:
 		verbose_name_plural = "Heroes"
