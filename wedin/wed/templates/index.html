@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">       
-    <link rel="shortcut icon" href="{% static 'favicon-aqua.ico' %}">  
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">  
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
     <!-- Global CSS -->
@@ -36,7 +36,14 @@
 </head> 
 
 <body data-spy="scroll">    
-
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>		 
     <!-- ******HEADER****** --> 
     <header id="header" class="header navbar-fixed-top">  
         <div class="container ">       
@@ -253,7 +260,7 @@
     <footer class="footer">
         <div class="footer-content text-center">
             <div class="container">
-                <div class="copyright">Website Developed By <br> <a href="http://www.mbecudaonline.tk/choakumndi" target="_blank"> Cho A. Ndi <br> | NDICSON TECNOLOGY SOLUTIONS |</a></div>  
+                <div class="copyright">Developed By <br> <a href="http://www.mbecudaonline.tk/choakumndi" target="_blank"> Cho A. Ndi <br> | NDICSON TECHNOLOGY SOLUTIONS |</a></div>  
                 <div class="credit">Photos: <br> <a href="#" target="_blank">{{bride|upper}} & {{groom|upper}}</a></div>
             </div><!--//container-->       
         </div><!--//footer-content-->
@@ -398,8 +405,10 @@
                             <h4 class="col-title text-center">{{direct.grouper.subtitle}}</h4>
                             <div class="col-subtitle script text-center">{{direct.grouper.venue}}</div>
 							{% for items in direct.list %} 
-							{% if forloop.first %}                           
-                            <div class="figure-container"><img class="img-responsive" src="{{items.pix.url}}" alt="" />DOn't forget image</div>
+							{% if forloop.first %} 
+							{% thumbnail items.pix "100x100" crop="center" as im %}                          
+                            <div class="figure-container"><img class="img-responsive" src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}" alt="picture" />DOn't forget image</div>
+                            {% endthumbnail %}
                             {% endif %}
                             <h5 class="section-title"><i class="fa fa-{{items.means|lower}}"></i> {{items.means}}r</h5>
                             <p>
@@ -450,7 +459,7 @@
         <div class="config-wrapper-inner">
             <a id="config-trigger" class="config-trigger" href="#"><i class="fa fa-music"></i></a>
             <div id="config-panel" class="config-panel">
-			<iframe width='203px' height='105px' scrolling='no' src="http://localhost:8088/amplitudejs/examples/full-player/index.php">player</iframe>
+			<iframe width='203px' height='105px' scrolling='no' src="http://www.mbecudaonline.tk/musicplayer/amplitudejs/examples/full-player/index.php">player</iframe>
                 <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
             </div><!--//configure-panel-->
         </div><!--//config-wrapper-inner-->
@@ -465,29 +474,28 @@
     <script type="text/javascript" src="{% static 'plugins/jquery-placeholder/jquery.placeholder.js' %}"></script>
     <script type="text/javascript" src="{% static 'plugins/jquery-inview/jquery.inview.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'plugins/imagesloaded.pkgd.min.js' %}"></script> 
-    <script type="text/javascript" src="# static 'plugins/packery.pkgd.min.js' "></script>  
-    <script type="text/javascript" src="# static 'plugins/instafeed.min.js' "></script>
+    <script type="text/javascript" src="{% static 'plugins/packery.pkgd.min.js' %}"></script>  
     <!--//form related JS -->
-    <script type="text/javascript" src="# static 'plugins/jquery-validation/dist/jquery.validate.min.js' "></script>
-    <!--//Google map related JS -->
-	<script async defer src="https://maps.googleapis.com/maps/api/js"
-  type="text/javascript"></script>
+    <script type="text/javascript" src="{% static 'plugins/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+    <!--//Google map related JS -->	
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
     <!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>  -->
-    <script type="text/javascript" src="# static 'plugins/gmaps/gmaps.js' "></script>  
+    <script type="text/javascript" src="{% static 'plugins/gmaps/gmaps.js' %}"></script>  
     <!--//Image Gallery related JS -->
-    <script type="text/javascript" src="# static 'plugins/Gallery/js/jquery.blueimp-gallery.min.js' "></script>
-    <script type="text/javascript" src="# static 'plugins/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js' "></script>
+    <script type="text/javascript" src="{% static 'plugins/Gallery/js/jquery.blueimp-gallery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js' %}"></script>
     <!-- Form iOS fix -->
-    <script type="text/javascript" src="# static 'plugins/isMobile/isMobile.min.js' "></script>
-    <script type="text/javascript" src="# static 'js/form-mobile-fix.js' "></script>
+    <script type="text/javascript" src="{% static 'plugins/isMobile/isMobile.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/form-mobile-fix.js' %}"></script>
     <!--Ajax Form -->
-    <script type="text/javascript" src="# static 'js/ajax-form.js' "></script>
+    <script type="text/javascript" src="{% static 'js/ajax-form.js' %}"></script>
     <!-- Animations-->
-    <script type="text/javascript" src="# static 'js/animations.js' "></script> 
+    <script type="text/javascript" src="{% static 'js/animations.js' %}"></script> 
     
-    <script type="text/javascript" src="# static 'js/main.js' "></script> 
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script> 
 	
     <!-- Music Player Viewer -->
-    <script src="# static 'js/demo/style-switcher.js' "></script>
+    <script src="{% static 'js/style-switcher.js' %}"></script>
+    
 </body>
 </html>
