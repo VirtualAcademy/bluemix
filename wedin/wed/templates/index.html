@@ -3,6 +3,9 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
+{% load i18n %}
+{% load staticfiles %}
+{% load thumbnail %}
 	<title>{{bride}} & {{groom}}</title>
 	<!-- Meta -->
        <meta charset="utf-8">
@@ -10,16 +13,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">       
-    <link rel="shortcut icon" href="../static/favicon-aqua.ico">  
+    <link rel="shortcut icon" href="{% static 'favicon-aqua.ico' %}">  
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
     <!-- Global CSS -->
-    <link rel="stylesheet" href="../static/plugins/font-awesome/css/font-awesome.min.css">   
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome/css/font-awesome.min.css' %}">   
     <!-- Plugins CSS -->   
-    <link rel="stylesheet" href="../static/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href=" ">
-    <link rel="stylesheet" href=" ">
-    <link rel="stylesheet" href=" ">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/love-icons/style.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/animate-css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/Gallery/css/blueimp-gallery.min.css' %}">
     <link rel="stylesheet" href=" ">
     
     <!-- Theme CSS -->
@@ -190,7 +193,15 @@
                     <div role="tabpanel" class="tab-pane tab-pane-1 active" id="gallery-1">
                         <div id="photos-wrapper" class="photos-wrapper">
 							{% for gal in gallery %}
-                            <div class="item"><a href="{{gal.photo.url}}" data-gallery><img class="img-responsive" src="{{gal.photo.url}}" alt="Photos" /></a></div>
+							{% if gal.photo|is_portrait %}
+							{% thumbnail gal.photo "100x200" crop="center" as im %}
+                            <div class="item"><a href="{{gal.photo.url}}" data-gallery><img class="img-responsive" src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}" alt="Photos" /></a></div>
+                            {% endthumbnail %}
+							{% else %}
+							{% thumbnail gal.photo "200x100" crop="center" as im %}
+                            <div class="item"><a href="{{gal.photo.url}}" data-gallery><img class="img-responsive" src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}" alt="Photos" /></a></div>
+                            {% endthumbnail %}
+                            {% endif %}
                             {% endfor %}
                         </div><!--//photos-wrapper-->
                     </div><!--tabe-pane-1-->

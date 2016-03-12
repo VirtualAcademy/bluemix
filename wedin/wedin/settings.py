@@ -32,9 +32,16 @@ def get_env_variable(var_name):
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env_variable('WEDIN_KEY')
+ENV_ROLE = get_env_variable('ENV_ROLE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
+
+if ENV_ROLE == 'development':
+    DEBUG = True
+    TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -49,6 +56,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'wed',
+    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
