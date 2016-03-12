@@ -17,7 +17,8 @@ def	home(request):
 	# 		context = {'bride':info.bride_nick,
 	# 				'groom':info.groom_nick,
 	# 				'wed_date':info.wedin_date,
-	# 				'slogan':info.slogan,
+	# 				'email:info.email'
+	# 				'phonenumber':info.phone,
 	# 				'events':events,
 	# 				'directions':directions,
 	# 				'facilities':facilities,
