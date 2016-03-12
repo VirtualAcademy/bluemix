@@ -3,7 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
-	<title>bride & groom</title>
+	<title>{{bride}} & {{groom}}</title>
 	<!-- Meta -->
        <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,13 +66,13 @@
              <div class="row">
                  <div class="hero-box col-md-5 col-sm-7 col-xs-12">
                     <h1 class="headline script">
-                        <span class="names display-block">bride|title <i class='fa fa-venus-mars'></i> groom|title</span>
+                        <span class="names display-block">{{bride|title}} <i class='fa fa-venus-mars'></i> {{groom|title}}</span>
                         <span class="statement display-block">
-                            <span class="swirl-left"></span><span class="statement-text">slogan</span><span class="swirl-right"></span>
+                            <span class="swirl-left"></span><span class="statement-text">{{slogan}}</span><span class="swirl-right"></span>
                         </span><!--//statement-->
                     </h1><!--/headline-->
                     <div class="date">
-                        <span class="date-text">wed_date|date:'F d, Y'</span>
+                        <span class="date-text">{{wed_date|date:'F d, Y'}}</span>
                     </div><!--//date-->
                     <a class="btn btn-primary btn-rsvp" href="#" data-toggle="modal" data-target="#rsvp-modal">RSVP Now</a>
                  </div><!--//hero-box-->
@@ -206,9 +206,9 @@
             <div class="message-container">
                 <div class="message-inner center-block">
 				 for reg in registry 
-                    <div class="intro">reg.note</div>
-                    <div class="thank-you script">reg.signature <i class='fa fa-smile-o'></i></div>
-                    <div class="signature script">bride & groom</div>
+                    <div class="intro">{{reg.note}}</div>
+                    <div class="thank-you script">reg.{{signature}} <i class='fa fa-smile-o'></i></div>
+                    <div class="signature script">{{bride}} & {{groom}}</div>
                     <div class="couple-profile"></div>
 				 endfor 
                 </div><!--//message-inner-->
@@ -291,7 +291,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h2 id="rsvpModalLabel" class="modal-title text-center">
                         <span class="title script display-block"><span class="title-deco-left"></span><span class="title-text">RSVP</span><span class="title-deco-right"></span></span>
-                        <span class="subtitle display-block">Come and celebrate with us! <br> Please RSVP by May 16, 2016</span>
+                        <span class="subtitle display-block">Come and celebrate with us! <br> Please RSVP by {{wed_date|date:'F d, Y'}}</span>
                     </h2>
                     
                 </div><!--//modal-header-->
@@ -359,7 +359,7 @@
                             </div>   
                             
                             <div class="additional-info col-md-12 col-sm-12 col-xs-12 text-center">
-                                If you have any questions please let us know. You can either email us at <a href="#">{{email}}</a> or give us a ring at {{phonenumber}}
+                                If you have any questions please let us know. You can either email us at <a href="#">{{ email }}</a> or give us a ring at {{ phonenumber }}
                             </div><!--//notes-->    
                                        
                         </div><!--//row-->
@@ -386,8 +386,10 @@
                         <div class="event-col col-md-6 col-sm-6 col-xs-12">
                             <h4 class="col-title text-center">{{direct.grouper.subtitle}}</h4>
                             <div class="col-subtitle script text-center">{{direct.grouper.venue}}</div>
-							{% for items in direct.list %}                            
+							{% for items in direct.list %} 
+							{% if forloop.first %}                           
                             <div class="figure-container"><img class="img-responsive" src="{{items.pix.url}}" alt="" />DOn't forget image</div>
+                            {% endif %}
                             <h5 class="section-title"><i class="fa fa-{{items.means|lower}}"></i> {{items.means}}r</h5>
                             <p>
                             {{items.direction}}</p>

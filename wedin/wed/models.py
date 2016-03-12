@@ -30,7 +30,6 @@ class Event(models.Model):
 		return smart_unicode(u'%s' % (self.subtitle))
 		
 class Direction(models.Model):
-	#title=models.CharField(max_length=200,blank=False)
 	event=models.ForeignKey(Event)
 	means=models.CharField(max_length=200,blank=False)
 	direction=models.TextField(blank=False)

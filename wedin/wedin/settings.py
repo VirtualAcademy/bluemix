@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'wedin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'popdb.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'wedin_db.sqlite3'),
     }
 }
 
