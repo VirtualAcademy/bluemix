@@ -1,11 +1,20 @@
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .models import Hero, Event, Direction, Facility, Story, Giftregistry, Gallery
 
 # Create your views here.
 def	home(request):
 	if request.method == 'POST':
-		print request
-		return
+		name=request.POST.get('name')
+		message=request.POST.get('message')
+		email=request.POST.get('email')
+		guest=request.POST.get('guess')
+		guest_info=request.POST.get('guestinfo')
+		event=request.POST.get('event')
+		csrf_token=request.POST.get('csrfmiddlewaretoken')
+		print email, name, message, guestinfo, guest, event
+		return HttpResponse("Well Received, Thank You.")
 	else:
 		events=Event.objects.all()
 		directions=Direction.objects.all()

@@ -314,7 +314,7 @@
                     
                 </div><!--//modal-header-->
                 <div class="modal-body">
-                    <form id="rsvp-form" class="rsvp-form form" method="post" action="/mailer.php">     
+                    <form id="rsvp-form" class="rsvp-form form" method="post" action="#">     
                         <div id="form-messages" class="text-center"></div>                  
                         <div class="row text-left">   
                             <div class="name-group col-md-6 col-sm-6 col-xs-12 form-group">
@@ -365,7 +365,7 @@
                                 </div>
                             </div>                                                   
                             
-                            <div class="message-group col-md-12 col-sm-12 col-xs-12 form-group">
+                            <div class="message-group col-md-12 col-sm-12 col-xs-12 form-group">{% csrf_token %}
                                 <div class="form-group-inner">
                                     <label for="cmessage">Additional Information</label>
                                     <textarea class="form-control" id="cmessage" name="message" placeholder="eg. Vegetarian &amp; dietary requests"></textarea>
