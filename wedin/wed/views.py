@@ -1,7 +1,7 @@
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from .models import Hero, Event, Direction, Facility, Story, Giftregistry, Gallery
+from .models import Hero, Event, Direction, Facility, Story, Giftregistry, Gallery, Rsvp
 
 # Create your views here.
 def	home(request):
@@ -13,7 +13,14 @@ def	home(request):
 		guest_info=request.POST.get('guestinfo')
 		event=request.POST.get('event')
 		csrf_token=request.POST.get('csrfmiddlewaretoken')
-		print email, name, message, guestinfo, guest, event
+		# n=Rsvp(full_name = name,
+		# 	email = email,
+		# 	guests = guest,
+		# 	attending = True,
+		# 	events= event,
+		# 	guestinfo= guestinfo,
+		# 	message= message)
+		# n.save()
 		return HttpResponse("Well Received, Thank You.")
 	else:
 		events=Event.objects.all()

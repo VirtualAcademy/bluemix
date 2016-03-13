@@ -200,15 +200,19 @@
                     <div role="tabpanel" class="tab-pane tab-pane-1 active" id="gallery-1">
                         <div id="photos-wrapper" class="photos-wrapper">
 							{% for gal in gallery %}
-							{% if gal.photo|is_portrait %}
-							{% thumbnail gal.photo "100x200" crop="center" as im %}
-                            <div class="item"><a href="{{gal.photo.url}}" data-gallery><img class="img-responsive" src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}" alt="Photos" /></a></div>
-                            {% endthumbnail %}
+            				{% comment %}
+							<!-- {% if gal.photo|is_portrait %}
+							{% thumbnail gal.photo "150x240" crop="center" as im %} -->
+            				{% endcomment %}
+                            <div class="item"><a href="{{gal.photo.url}}" data-gallery><img class="img-responsive" src="{{gal.photo.url}}" alt="Photos" /></a></div>
+            				{% comment %}
+<!--                             {% endthumbnail %}
 							{% else %}
-							{% thumbnail gal.photo "200x100" crop="center" as im %}
+							{% thumbnail gal.photo "240x150" crop="center" as im %}
                             <div class="item"><a href="{{gal.photo.url}}" data-gallery><img class="img-responsive" src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}" alt="Photos" /></a></div>
                             {% endthumbnail %}
-                            {% endif %}
+                            {% endif %} -->
+            				{% endcomment %}
                             {% endfor %}
                         </div><!--//photos-wrapper-->
                     </div><!--tabe-pane-1-->
@@ -314,7 +318,8 @@
                     
                 </div><!--//modal-header-->
                 <div class="modal-body">
-                    <form id="rsvp-form" class="rsvp-form form" method="post" action="#">     
+                    <form id="rsvp-form" class="rsvp-form form" method="post" action="#">
+                    	{% csrf_token %}
                         <div id="form-messages" class="text-center"></div>                  
                         <div class="row text-left">   
                             <div class="name-group col-md-6 col-sm-6 col-xs-12 form-group">
@@ -407,7 +412,7 @@
 							{% for items in direct.list %} 
 							{% if forloop.first %} 
 							{% thumbnail items.pix "100x100" crop="center" as im %}                          
-                            <div class="figure-container"><img class="img-responsive" src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}" alt="picture" />DOn't forget image</div>
+                            <div class="figure-container"><img class="img-responsive" src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}" alt="picture" /></div>
                             {% endthumbnail %}
                             {% endif %}
                             <h5 class="section-title"><i class="fa fa-{{items.means|lower}}"></i> {{items.means}}r</h5>
