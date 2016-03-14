@@ -31,7 +31,7 @@ def get_env_variable(var_name):
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "tgs)tj=z(-g(h7@#g21a=d_e9+pv2c=)b7bev2srzau5p%-+y#"#get_env_variable('WEDIN_KEY')
+SECRET_KEY = get_env_variable('WEDIN_KEY')
 ENV_ROLE = get_env_variable('ENV_ROLE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
