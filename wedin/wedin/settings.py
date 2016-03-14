@@ -31,7 +31,7 @@ def get_env_variable(var_name):
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_variable('WEDIN_KEY')
+SECRET_KEY = "tgs)tj=z(-g(h7@#g21a=d_e9+pv2c=)b7bev2srzau5p%-+y#"#get_env_variable('WEDIN_KEY')
 ENV_ROLE = get_env_variable('ENV_ROLE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -96,8 +96,12 @@ WSGI_APPLICATION = 'wedin.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'wedin_db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'wedin',#os.path.join(BASE_DIR, ),
+        'USER': 'root',
+        'PASSWORD':'admin',
+        'HOST':'localhost',
+        'PORT':3306,
     }
 }
 
@@ -131,3 +135,10 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'static','media')
+
+
+
+if ENV_ROLE == 'production':
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config()
+    STATIC_URL = os.path.join(BASE_DIR,'static','static_root')
