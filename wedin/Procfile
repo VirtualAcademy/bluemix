@@ -1,1 +1,1 @@
-web: gunicorn wed.wsgi --workers 2
+web: gunicorn wedin.wsgi --log-file

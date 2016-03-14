@@ -140,5 +140,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'static','media')
 
 if ENV_ROLE == 'production':
     import dj_database_url
-    DATABASES['default'] = dj_database_url.config()
+    db_env=dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_env)
     STATIC_URL = os.path.join(BASE_DIR,'static','static_root')
