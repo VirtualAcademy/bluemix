@@ -2,7 +2,7 @@ applications:
 - name: wedin
   memory: 512M
 # This is command provided by cf -c option
-  command: bash ./run.sh
+  command: sh run.sh
 # command: python manage.py syncdb --noinput; gunicorn wedin  
 # command: python manage.py runserver $PORT
 # command: python manage.py -c "import os; print os.getcwd()"
