@@ -8,7 +8,7 @@ applications:
 # command: python manage.py -c "import os; print os.getcwd()"
 # New Buildpack: https://developer.ibm.com/answers/questions/
 # buildpack: https://github.com/ephoning/heroku-buildpack-python
-  buildpack: https://github.com/cloudfoundry/python-buildpack
+# buildpack: https://github.com/cloudfoundry/python-buildpack
   path: .
   services:
   - MySQL-wed
